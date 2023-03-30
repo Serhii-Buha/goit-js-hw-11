@@ -1,7 +1,6 @@
 import './sass/index.scss';
 import axiosGetImg from './js/axiosGetImg';
 import renderImage from './js/renderImage';
-import './js/simplelightbox';
 
 const form = document.querySelector('#search-form');
 const galleryEl = document.querySelector('.gallery');
