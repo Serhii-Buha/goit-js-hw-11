@@ -2,12 +2,14 @@ import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
+//clearGallery необязательный аргумент и имеет значение по умолчанию false. Если он установлен в true, то галерея изображений будет очищена перед отображением нового результата поиска
 const renderImage = (responses, clearGallery = false) => {
+  //Аргумент page === 1 определяет значение переменной clearGallery, которое равно true, если текущая страница поиска = 1. Это означает, что галерея будет очищена перед добавлением новых изображений только при первой загрузке страницы. Если мы находимся на 2 странице и далее, то новые изображения будут добавлены в конец списка.
   const galleryEl = document.querySelector('.gallery');
 
   // проверяем, что на странице есть элемент .gallery
   if (!galleryEl) return;
-
+  // если clearGallery = true
   if (clearGallery) {
     galleryEl.innerHTML = '';
   }
@@ -57,3 +59,44 @@ const renderImage = (responses, clearGallery = false) => {
 };
 
 export default renderImage;
+
+//
+
+// import Notiflix from 'notiflix';
+// import SimpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
+
+// const renderImage = responses => {
+//   const galleryEl = document.querySelector('.gallery');
+//   const imageEl = responses.data.hits
+//     .map(
+//       response =>
+//         `<a href="${response.largeImageURL}" class="gallery__link">
+//     <img src="${response.webformatURL}" alt="${response.tags}" class="gallery__image">
+//     <div class="info">
+//     <p class="info__item">
+//     <b>Likes</b> ${response.likes}
+//     </p>
+//     <p class="info__item">
+//     <b>Views</b> ${response.views}
+//     </p>
+//     <p class="info__item">
+//     <b>Comments</b> ${response.comments}
+//     </p>
+//     <p class="info__item">
+//     <b>Downloads</b> ${response.downloads}
+//     </p>
+//     </div>
+//       </a>`
+//     )
+//     .join('');
+
+//   galleryEl.innerHTML = imageEl;
+
+//   const lightbox = new SimpleLightbox('.gallery a', {
+//     captionDelay: 250,
+//     captionsData: 'alt',
+//   });
+// };
+
+// export default renderImage;

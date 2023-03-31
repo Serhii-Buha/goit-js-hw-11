@@ -14,10 +14,10 @@ const axiosOptions = {
   },
 };
 
-const axiosGetImg = async (searchInput, page = 1) => {
+const axiosGetImg = async (currentSearchValue, page = 1) => {
   try {
     const response = await axios.get(
-      `?q=${searchInput}&page=${page}`,
+      `?q=${currentSearchValue}&page=${page}`,
       axiosOptions
     );
 
