@@ -22,6 +22,14 @@ const searchImages = () => {
         loadMoreBtn.style.display = 'none';
       }
       page++; //увеличение значения текущей страницы на 1
+
+      if (page > 2) {
+        const { height: cardHeight } = document
+          .querySelector('.gallery')
+          .firstElementChild.getBoundingClientRect();
+
+        window.scrollBy({ top: cardHeight * 2, behavior: 'smooth' });
+      }
     })
     .catch(error => console.log(error));
 };
