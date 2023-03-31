@@ -25,6 +25,14 @@ const axiosGetImg = async (currentSearchValue, page = 1) => {
       Notiflix.Notify.success(
         `Hooray! We found ${response.data.totalHits} images.`
       );
+
+      if (response.data.totalHits <= page * 40) {
+        const loadMoreBtn = document.querySelector('.load-more');
+        loadMoreBtn.style.display = 'none';
+        Notiflix.Notify.info(
+          `We're sorry, but you've reached the end of search results.`
+        );
+      }
       return response;
     } else {
       Notiflix.Notify.failure(
